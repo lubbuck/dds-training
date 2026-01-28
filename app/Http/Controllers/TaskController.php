@@ -32,7 +32,7 @@ class TaskController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'description' => 'nullable',
-            'due_date' => 'nullable|date',
+            'due_date' => 'nullable|date|after:today',
         ]);
 
         Task::create($validated);
@@ -64,9 +64,11 @@ class TaskController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',
             'description' => 'nullable',
-            'due_date' => 'nullable|date',
+            'due_date' => 'nullable|date|after:today',
             'is_completed' => 'nullable|boolean'
         ]);
+
+        $validated['is_completed'] = $request->has('is_completed');
 
         $task->update($validated);
         return redirect()->route('tasks.index')->with('success', 'Task atualizada!');

@@ -18,7 +18,14 @@ class Task extends Model
     ];
 
     protected $casts = [
-        'due_date' => 'date',
         'is_completed' => 'boolean',
     ];
+
+    public function date()
+    {
+        if (!is_null($this->due_date)) {
+            return \Carbon\Carbon::createFromFormat('Y-m-d', $this->due_date)->format('d/m/Y');
+        }
+        return $this->due_date;
+    }
 }

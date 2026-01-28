@@ -2,6 +2,17 @@
 
 @section('app')
     <div class="task-container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <b>Erros</b>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <h1>Editar Task #{{ $task->id }}</h1>
         <form action="{{ route('tasks.update', $task->id) }}" method="POST" class="form-container">
             @csrf

@@ -6,10 +6,10 @@
     --bg-green: #90ee90;
     --bg-black: #333333;
     --bg-blue: #add8e6;
+    --bg-red: #ff7f7f;
 }
 
 * {
-
     font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
     /* Estilo manual */
     font-weight: normal;
@@ -99,10 +99,17 @@
 }
 
 .alert {
-    background-color: #f9f9f9;
-    color: green;
+    padding: 20px;
     font-weight: bold;
     margin-top: 15px;
+}
+
+.alert-success {
+    background-color: var(--bg-green);
+}
+
+.alert-danger {
+    background-color: var(--bg-yellow);
 }
 
 /* Container do Formulário */
