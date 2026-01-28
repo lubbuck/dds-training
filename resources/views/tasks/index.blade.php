@@ -1,41 +1,42 @@
 @extends('layout.app')
 
 @section('app')
-    <h1>Minhas Tasks</h1>
-    <a href="{{ route('tasks.create') }}">Nova Task</a>
+    <div class="task-container">
+        <h1>Minhas Tasks</h1>
+        <a href="{{ route('tasks.create') }}" class="btn btn-primary" onclick="addTask()">Nova Task</a>
 
-    @if (session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
-    @endif
+        @if (session('success'))
+            <p class="alert">{{ session('success') }}</p>
+        @endif
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Data Limite</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($tasks as $task)
+        <table class="task-table">
+            <thead>
                 <tr>
-                    <td>{{ $task->id }}</td>
-                    <td>{{ $task->title }}</td>
-                    <td>{{ $task->due_date }}</td>
-                    <td>{{ $task->is_completed ? 'OK' : '' }}</td>
-                    <td>
-                        <a href="{{ route('tasks.edit', $task->id) }}">Editar</a>
-
-                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" onclick="return confirm('Excluir?')">Deletar</button>
-                        </form>
-                    </td>
+                    <th>Título</th>
+                    <th>Data Limite</th>
+                    <th>Status</th>
+                    <th>Ações</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="task-list">
+                @foreach ($tasks as $task)
+                    <tr>
+                        <td title="{{ $task->description }}">{{ $task->title }}</td>
+                        <td>{{ $task->date() }}</td>
+                        <td class="text-center">{{ $task->is_completed ? 'OK' : '' }}</td>
+                        <td>
+                            <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-edit">Editar</a>
+                            <button type="submit" class="btn btn-delete"
+                                onclick="document.getElementById('form-delete').submit()">Deletar</button>
+                            <form id='form-delete' action="{{ route('tasks.destroy', $task->id) }}" method="POST"
+                                style="display:inline">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 @endsection

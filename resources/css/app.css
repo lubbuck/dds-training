@@ -1,11 +1,166 @@
-@import 'tailwindcss';
+:root {
+    --border-color: #333;
+    --bg-yellow: #fff3b0;
+    --bg-pink: #ffcccb;
+    --bg-gray: #e0e0e0;
+    --bg-green: #90ee90;
+    --bg-black: #333333;
+    --bg-blue: #add8e6;
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+* {
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+    /* Estilo manual */
+    font-weight: normal;
+    font-size: 0.9rem
+}
+
+.task-container h1 {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.task-container {
+    border: 3px solid var(--border-color);
+    border-radius: 40px 15px 40px 15px;
+    /* Bordas irregulares */
+    padding: 30px;
+    max-width: 800px;
+    margin: auto;
+    background: white;
+}
+
+.task-table {
+    background-color: #f9f9f9;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.task-table th {
+    color: #888;
+    font-weight: normal;
+    text-align: left;
+    padding: 10px;
+}
+
+.task-table td {
+    padding: 15px 10px;
+    border-bottom: 2px solid var(--border-color);
+    border-left: 2px solid #ccc;
+    /* Linhas verticais do desenho */
+}
+
+.task-table td:first-child {
+    border-left: none;
+}
+
+/* Botões */
+.btn {
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 5px 15px;
+    font-family: inherit;
+    font-weight: bold;
+    transition: transform 0.1s;
+    text-decoration: none;
+    background-color: var(--bg-gray);
+    color: var(--bg-black);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background-color: var(--bg-blue);
+}
+
+.btn-edit {
+    background-color: var(--bg-yellow);
+}
+
+.btn-delete {
+    background-color: var(--bg-pink);
+}
+
+.btn-success {
+    background-color: var(--bg-green);
+}
+
+.text-center {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.alert {
+    background-color: #f9f9f9;
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Container do Formulário */
+.form-container {
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Espaço entre cada bloco label+input */
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Bloco que agrupa label e input */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* Espaço entre o label e o input dele */
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--border-color);
+}
+
+/* Estilização dos Campos */
+input[type="text"],
+input[type="date"],
+textarea {
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    background-color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    /* Limita a largura para não esticar demais em telas grandes */
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    box-shadow: 4px 4px 0px var(--border-color);
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+/* Alinhamento dos botões */
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
 }
