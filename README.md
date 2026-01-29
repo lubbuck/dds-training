@@ -41,7 +41,7 @@ Como pré-requisito para a execução do projeto é necessário ter instalado na
 
     -   Criar os containers no docker
         ```bash
-        docker-compose up -d
+        docker-compose up -d --builds
         ```
     -   Instalar as dependências do backend via composer
         ```bash
@@ -59,10 +59,6 @@ Como pré-requisito para a execução do projeto é necessário ter instalado na
         ```bash
         docker-compose run --rm npm install
         ```
-    -   Compilar as dependências do frontend via npm
-        ```bash
-        docker-compose run --service-ports --rm npm run dev
-        ```
     -   Criar as tabelas no banco de dados com dados iniciais
         ```bash
         docker-compose run --rm artisan migrate --seed
@@ -70,6 +66,10 @@ Como pré-requisito para a execução do projeto é necessário ter instalado na
     -   Permitir o acesso do docker às pastas
         ```bash
         docker exec -it dds_training-app chown -R www-data:www-data /var/www/storage
+        ```
+        -   Compilar as dependências do frontend via npm
+        ```bash
+        docker-compose run --service-ports --rm npm run dev
         ```
     -   Após os comandos acesse o projeto em: [http://localhost/](http://localhost/)
 
