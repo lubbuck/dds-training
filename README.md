@@ -41,7 +41,7 @@ Como pré-requisito para a execução do projeto é necessário ter instalado na
 
     -   Criar os containers no docker
         ```bash
-        docker-compose up -d --builds
+        docker-compose up -d --build
         ```
     -   Instalar as dependências do backend via composer
         ```bash
