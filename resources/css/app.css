@@ -104,13 +104,14 @@
     padding: 20px;
     font-weight: bold;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .alert-success {
     background-color: var(--bg-green);
 }
 
-.alert-danger {
+.alert-warning   {
     background-color: var(--bg-yellow);
 }
 
